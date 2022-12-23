@@ -27,17 +27,19 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 import dateparser
 
-server_timezone = "US/Eastern"
-new_timezone = "US/Pacific"
 timezones = ['America/Los_Angeles', 'Europe/Madrid', 'America/Puerto_Rico', 'Australia/Brisbane' ]
-time_format = "%Y-%m-%d %H:%M:%S"
+time_format = "%-I:%M%p"
+source_time = sys.argv[1]
 
+server_timezone = "US/Eastern"
+# new_timezone = "US/Pacific"
 current_time = datetime.now(ZoneInfo(server_timezone)) 
+# time_format = "%Y-%m-%d %H:%M:%S"
 
 # current_time_in_new_timezone = ???
 # current_time_in_new_timezone = current_time.astimezone(ZoneInfo(new_timezone))
 
-print(current_time.isoformat(timespec='seconds'))
+# print("Current time: " + current_time.isoformat(timespec='seconds'))
 # 2021-10-04T02:42:54-04:00
 
 # print(repr(current_time))
@@ -50,9 +52,11 @@ print(current_time.isoformat(timespec='seconds'))
 # datetime.datetime(2021, 10, 3, 23, 42, 54, 40600, tzinfo=zoneinfo.ZoneInfo(key='US/Pacific'))
 
 #print("Hello World! Argument1 value: " + sys.argv[1])
-print( dateparser.parse('12/12/12') )
-print( dateparser.parse('4PM') )
-
+# print( dateparser.parse('12/12/12') )
+print( "DateParser (" + source_time + "): " + dateparser.parse(source_time).strftime(time_format) )
+parsed_date = dateparser.parse(source_time)
+print(parsed_date)
+print ("\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n")
 for zone in timezones:
-	time_in_new_timezone = current_time.astimezone(ZoneInfo(zone))
+	time_in_new_timezone = parsed_date.astimezone(ZoneInfo(zone))
 	print(zone + ": " + time_in_new_timezone.strftime(time_format))
