@@ -21,6 +21,7 @@ import sys
 from datetime import datetime
 from zoneinfo import ZoneInfo
 import dateparser
+import difflib
 
 # timezones = ['America/Los_Angeles', 'Europe/Madrid', 'America/Puerto_Rico', 'Australia/Brisbane' ] # Default list?
 # test locations: America/Los_Angeles,Asia/Nicosia, Europe/Madrid, Australia/Brisbane, America/Chicago
@@ -59,6 +60,12 @@ print( "DateParser (" + source_time + "): " + dateparser.parse(source_time).strf
 parsed_date = dateparser.parse(source_time)
 print(parsed_date)
 print ("\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n")
+tz_list = [  'Africa/El_Aaiun',
+  'Europe/Madrid',
+  'Africa/Ceuta',
+  'Atlantic/Canary',
+  'Europe/Helsinki',
+  'Pacific/Fiji',]
 for zone in timezones:
 	match zone:
 		case "America/Los_Angeles":
@@ -68,6 +75,8 @@ for zone in timezones:
 			print("🇺🇸")
 		case _:
 			print("Nuthin")
+			print(difflib.get_close_matches(zone,tz_list,cutoff=.35))
+			zone = difflib.get_close_matches(zone,tz_list,cutoff=.35)[0] 
 	time_in_new_timezone = parsed_date.astimezone(ZoneInfo(zone))
 	print(zone + ": " + time_in_new_timezone.strftime(time_format))
 	
