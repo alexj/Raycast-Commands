@@ -22,15 +22,14 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 import dateparser
 
-timezones = ['America/Los_Angeles', 'Europe/Madrid', 'America/Puerto_Rico', 'Australia/Brisbane' ]
-print(timezones)
+# timezones = ['America/Los_Angeles', 'Europe/Madrid', 'America/Puerto_Rico', 'Australia/Brisbane' ] # Default list?
+# test locations: America/Los_Angeles,Asia/Nicosia, Europe/Madrid, Australia/Brisbane, America/Chicago
 time_format = "%-I:%M%p"
 source_time = sys.argv[1]
 source_locations = sys.argv[2]
-print(source_locations.split(","))
-# timezones = source_locations.split(",")
 timezones = [location.strip() for location in source_locations.split(",")]
 print(timezones)
+
 print ("\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n")
 
 # server_timezone = "US/Eastern"
@@ -61,5 +60,17 @@ parsed_date = dateparser.parse(source_time)
 print(parsed_date)
 print ("\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n")
 for zone in timezones:
+	match zone:
+		case "America/Los_Angeles":
+			print("🇺🇸")
+		case "LA":
+			zone = "America/Los_Angeles"
+			print("🇺🇸")
+		case _:
+			print("Nuthin")
 	time_in_new_timezone = parsed_date.astimezone(ZoneInfo(zone))
 	print(zone + ": " + time_in_new_timezone.strftime(time_format))
+	
+	
+	
+	
