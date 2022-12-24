@@ -51,10 +51,9 @@ tz_list = zoneinfo.available_timezones()
 parsed_date = dateparser.parse(source_time)
 
 
-print( "Input Time: " + source_time + " - Parsed: " + str(parsed_date) + " (" + dateparser.parse(source_time).strftime(time_format) + ")" )
-
-print(time_zones)
-print ("\n")
+# print( "Input Time: " + source_time + " - Parsed: " + str(parsed_date) + " (" + dateparser.parse(source_time).strftime(time_format) + ")" )
+# print(time_zones)
+# print ("\n")
 
 for zone in time_zones:
 	zone_input = zone
@@ -92,4 +91,8 @@ for zone in time_zones:
 		time_zone_output = time_zone_output + "• ‼️ No match: " + zone_input + "\n"
 # 		print("‼️ No match: " + zone_input + "\n")
 print(time_zone_output)
-write_to_clipboard(time_zone_output)
+try:
+	write_to_clipboard(time_zone_output)
+	print("🎉 List copied to clipbaord")
+except:
+	print("😕 Something went wrong - your list was not copied to the clipboard")
