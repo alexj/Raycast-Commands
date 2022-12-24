@@ -23,6 +23,7 @@ import zoneinfo
 from zoneinfo import ZoneInfo
 import dateparser
 import difflib
+import subprocess
 
 # ----- Caching (DISABLED) ----
 # Cache the list of timezones - unused as no clear benefit to execution time
@@ -36,12 +37,19 @@ import difflib
 # tz_list = get_time_zones() # used if we want to cache
 # ------------------------------
 
+def write_to_clipboard(output):
+    process = subprocess.Popen(
+        'pbcopy', env={'LANG': 'en_US.UTF-8'}, stdin=subprocess.PIPE)
+    process.communicate(output.encode('utf-8'))
+
 time_format = "%-I:%M %p"
+time_zone_output = ''
 source_time = sys.argv[1]
 source_locations = sys.argv[2]
 time_zones = [location.strip() for location in source_locations.split(",")]
 tz_list = zoneinfo.available_timezones()
 parsed_date = dateparser.parse(source_time)
+
 
 print( "Input Time: " + source_time + " - Parsed: " + str(parsed_date) + " (" + dateparser.parse(source_time).strftime(time_format) + ")" )
 
@@ -77,6 +85,11 @@ for zone in time_zones:
 				zone = "UTC"
 	if match == 1:
 		time_in_new_time_zone = parsed_date.astimezone(ZoneInfo(zone))
-		print(time_in_new_time_zone.strftime(time_format) + " - " + zone_input + " (" + zone + ")" )
+		time_zone_output = time_zone_output + "• " + time_in_new_time_zone.strftime(time_format) + " - " + zone_input + " (" + zone + ")\n"
+# 		print(time_in_new_time_zone.strftime(time_format) + " - " + zone_input + " (" + zone + ")" )
+
 	else:
-		print("‼️ No match: " + zone_input)
+		time_zone_output = time_zone_output + "• ‼️ No match: " + zone_input + "\n"
+# 		print("‼️ No match: " + zone_input + "\n")
+print(time_zone_output)
+write_to_clipboard(time_zone_output)
