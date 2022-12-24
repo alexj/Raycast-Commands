@@ -15,8 +15,7 @@ Requires [dateparser](https://dateparser.readthedocs.io/en/latest/):
 
 
 # To-Do
-- Lowercase the input and the list of timezones to improve fuzzy matching..?
-- Capture the string entered for each timezone, separate from `zone`
+- Lowercase or title case the input and the list of timezones to improve fuzzy matching..?
 - Add string to clipboard or output to current app
 - Automatically output the user's location at the end of the string
 - Add city name mapping for major locales
