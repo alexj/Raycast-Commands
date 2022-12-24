@@ -23,3 +23,6 @@ Requires [dateparser](https://dateparser.readthedocs.io/en/latest/):
 - Add city name mapping for major locales
 - Make a script config where the user can include default locations, used if none are specified (Raycast doesn't support optional arguments)
 - Add config to automatically include a specific location/time at the start or end of the string (a label for the input time)
+
+# Credits
+Inspired by the [Timezone Expander Alfred workflow](https://github.com/devonzuegel/timezone-expander.alfredworkflow) by [Devon Zuegel](https://devonzuegel.com)

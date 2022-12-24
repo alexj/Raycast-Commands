@@ -50,34 +50,36 @@ print ("\n")
 
 for zone in timezones:
 	zone_input = zone
+	match = 1
 	match zone:
-		case "Atlanta" | "atlanta" | "ATL" | "atl" | "EDT" | "edt" | "EST" | "est" | "Boston" | "boston" | "NY" | "ny" | "NYC" | "nyc":
+		case "Atlanta" | "atlanta" | "ATL" | "atl" | "Boston" | "boston" | "EDT" | "edt" | "EST" | "est" | "Miami" | "miami" | "NY" | "ny" | "NYC" | "nyc":
 			zone = "US/Eastern"
-			zone_input = zone_input + "*" # highlight specified timezones
 		case "Austin" | "austin" | "ATX" | "atx" | "CDT" | "cdt" | "CST" | "cst" | "Dallas" | "dallas" | "Houston" | "houston" | "San Antonio" | "san antonio":
 			zone = "US/Central"
-			zone_input = zone_input + "*" # highlight specified timezones
 		case "Boulder" | "boulder" | "Denver" | "denver" | "El Paso" | "el paso" | "MDT" | "mdt" | "MST" | "mst":
 			zone = "US/Mountain"
-			zone_input = zone_input + "*" # highlight specified timezones
 		case "LA" | "la" | "Portland" | "portland" | "PDT" | "pdt" | "PST" | "pst"| "San Diego" | "san diego" | "San Francisco" | "san francisco" | "SF" | "sf":
 			zone = "US/Pacific"
-			zone_input = zone_input + "*" # highlight specified timezones
 		case "Cape town" | "cape town" | "Capetown" | "capetown":
 			zone = "Africa/Johannesburg"
-			zone_input = zone_input + "*" # highlight specified timezones
 		case "England" | "england" | "GB" | "gb" | "London" | "london" | "UK" | "uk":
 			zone = "UTC"
-			zone_input = zone_input + "*" # highlight specified timezones
 		case "New Zealand" | "new zealand" | "NZ" | "nz":
 			zone = "Pacific/Auckland"
-			zone_input = zone_input + "*" # highlight specified timezones
+		case "sofia" | "Sofia":
+			zone ="Europe/Sofia"
 		case _:
-#			zone = difflib.get_close_matches(zone.title(),tz_list,cutoff=.35)[0] # Title case helps for some inputs, but ruins acronyms like CDT
-			zone = difflib.get_close_matches(zone,tz_list,cutoff=.35)[0]
-	time_in_new_timezone = parsed_date.astimezone(ZoneInfo(zone))
-	print(time_in_new_timezone.strftime(time_format) + " - " + zone_input + " (" + zone + ")" )
-	
+			try:
+				zone = difflib.get_close_matches(zone,tz_list,cutoff=.6)[0]
+#				zone = difflib.get_close_matches(zone.title(),tz_list,cutoff=.35)[0] # Title case helps for some inputs, but ruins acronyms like CDT
+			except:
+				match = 0
+				zone = "UTC"
+	if match == 1:
+		time_in_new_timezone = parsed_date.astimezone(ZoneInfo(zone))
+		print(time_in_new_timezone.strftime(time_format) + " - " + zone_input + " (" + zone + ")" )
+	else:
+		print("‼️ No match: " + zone_input)
 	
 	
 	
