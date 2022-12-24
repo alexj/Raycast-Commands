@@ -15,10 +15,8 @@ Requires [dateparser](https://dateparser.readthedocs.io/en/latest/):
 
 
 # To-Do
-- Lowercase or title case the input and the list of timezones to improve fuzzy matching..?
+- Output everything on one line
 - Add string to clipboard or output to current app
 - Automatically output the user's location at the end of the string
 - Add city name mapping for major locales
-- Add separate lookup for matching against all timezones
 - Make a script config where the user can include default locations, used if none are specified
-- Find a way to have Python scan a list of timezone names to match provided cities
