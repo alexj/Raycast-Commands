@@ -18,9 +18,10 @@ Requires the applescript module
 
 
 # To-Do
-- Output everything on one line
-	- Perhaps an option for single line versus list output
-- Add string to clipboard or output to current app
+- Separate the write-to-clipboard from the paste functionality and turn it into an option
+- Perhaps an option or different script for:
+	- single line versus list output
+	- Copy to clipboard vs. paste
 - Make a config where the user can include default locations, used if none are specified (Raycast doesn't support optional arguments)
 - Add config to automatically include a specific location/time at the start or end of the string (a label for the input time)
 

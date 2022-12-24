@@ -50,7 +50,7 @@ source_locations = sys.argv[2]
 time_zones = [location.strip() for location in source_locations.split(",")]
 tz_list = zoneinfo.available_timezones()
 parsed_date = dateparser.parse(source_time)
-
+output_format = 'list' # 'list' or 'inline'
 
 # print( "Input Time: " + source_time + " - Parsed: " + str(parsed_date) + " (" + dateparser.parse(source_time).strftime(time_format) + ")" )
 # print(time_zones)
@@ -85,16 +85,19 @@ for zone in time_zones:
 				zone = "UTC"
 	if match == 1:
 		time_in_new_time_zone = parsed_date.astimezone(ZoneInfo(zone))
-		time_zone_output = time_zone_output + "• " + time_in_new_time_zone.strftime(time_format) + " - " + zone_input + " (" + zone + ")\n"
-# 		print(time_in_new_time_zone.strftime(time_format) + " - " + zone_input + " (" + zone + ")" )
-
+		if output_format == 'list':
+			time_zone_output = time_zone_output + "• " + time_in_new_time_zone.strftime(time_format) + " - " + zone_input + " (" + zone + ")\n"
+		else:
+			time_zone_output = time_zone_output + time_in_new_time_zone.strftime(time_format) + " - " + zone_input + " (" + zone + ") • "
 	else:
-		time_zone_output = time_zone_output + "• ‼️ No match: " + zone_input + "\n"
-# 		print("‼️ No match: " + zone_input + "\n")
+		if output_format == 'list':
+			time_zone_output = time_zone_output + "• ‼️ No match: " + zone_input + "\n"
+		else:
+			time_zone_output = time_zone_output + "‼️ No match: " + zone_input + " • "
 print(time_zone_output)
 try:
 	write_to_clipboard(time_zone_output)
-	print("🎉 List copied to clipbaord")
+# 	print("🎉 List copied to clipbaord")
 	
 	resp = applescript.tell.app("System Events",'''
 	tell application "System Events"
@@ -106,4 +109,5 @@ try:
 	assert resp.code == 0, resp.err
 # 	print(resp.out)
 except:
-	print("😕 Something went wrong - your list was not copied to the clipboard")
+ 	print("😕 Sorry, something went wrong when outputting the results.")
+	
