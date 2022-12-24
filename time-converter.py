@@ -19,6 +19,7 @@
 
 import sys
 from datetime import datetime
+import zoneinfo
 from zoneinfo import ZoneInfo
 import dateparser
 import difflib
@@ -60,33 +61,30 @@ print( "DateParser (" + source_time + "): " + dateparser.parse(source_time).strf
 parsed_date = dateparser.parse(source_time)
 print(parsed_date)
 print ("\n-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-\n")
-tz_list = [  'Africa/El_Aaiun',
-  'Europe/Madrid',
-  'Africa/Ceuta',
-  'Atlantic/Canary',
-  'Europe/Helsinki',
-  'Pacific/Fiji',
-  'America/Chicago']  # possibly reference zoneinfo.available_timezones() - see https://adamj.eu/tech/2021/05/06/how-to-list-all-timezones-in-python/?
+tz_list = zoneinfo.available_timezones()  
+# ^ possibly reference zoneinfo.available_timezones() - see https://adamj.eu/tech/2021/05/06/how-to-list-all-timezones-in-python/?
 
 # print(timezones)
 # print(len(timezones))
 # i = 0
 
 for zone in timezones:
+	zone_input = zone
 	match zone:
 		case "LA":
 			zone = "America/Los_Angeles"
 # 			print("Specified: " + zone)
+			zone_input = zone_input + "*"
 # 			i=i+1
 # 			print(i)
 		case _:
 # 			print(difflib.get_close_matches(zone,tz_list,cutoff=.35))
-			zone = difflib.get_close_matches(zone,tz_list,cutoff=.15)[0]
+			zone = difflib.get_close_matches(zone,tz_list,cutoff=.35)[0]
 # 			print("Found: " + zone)
 # 			i=i+1
 # 			print(i)
 	time_in_new_timezone = parsed_date.astimezone(ZoneInfo(zone))
-	print(zone + ": " + time_in_new_timezone.strftime(time_format))
+	print(zone_input + " (" + zone + "): " + time_in_new_timezone.strftime(time_format))
 	
 	
 	
