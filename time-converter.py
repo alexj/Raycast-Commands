@@ -24,6 +24,7 @@ from zoneinfo import ZoneInfo
 import dateparser
 import difflib
 import subprocess
+import applescript
 
 # ----- Caching (DISABLED) ----
 # Cache the list of timezones - unused as no clear benefit to execution time
@@ -94,5 +95,15 @@ print(time_zone_output)
 try:
 	write_to_clipboard(time_zone_output)
 	print("🎉 List copied to clipbaord")
+	
+	resp = applescript.tell.app("System Events",'''
+	tell application "System Events"
+	  tell process 1 where frontmost is true
+	    click menu item "Paste" of menu "Edit" of menu bar 1
+	  end tell
+	end tell	
+	''')
+	assert resp.code == 0, resp.err
+# 	print(resp.out)
 except:
 	print("😕 Something went wrong - your list was not copied to the clipboard")
