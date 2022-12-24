@@ -36,7 +36,7 @@ import difflib
 # tz_list = get_time_zones() # used if we want to cache
 # ------------------------------
 
-time_format = "%-I:%M%p"
+time_format = "%-I:%M %p"
 source_time = sys.argv[1]
 source_locations = sys.argv[2]
 time_zones = [location.strip() for location in source_locations.split(",")]
