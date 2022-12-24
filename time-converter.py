@@ -68,23 +68,23 @@ tz_list = [  'Africa/El_Aaiun',
   'Pacific/Fiji',
   'America/Chicago']  # possibly reference zoneinfo.available_timezones() - see https://adamj.eu/tech/2021/05/06/how-to-list-all-timezones-in-python/?
 
-print(timezones)
-print(len(timezones))
-i = 0
+# print(timezones)
+# print(len(timezones))
+# i = 0
 
 for zone in timezones:
 	match zone:
 		case "LA":
 			zone = "America/Los_Angeles"
-			print("Specified: " + zone)
-			i=i+1
-			print(i)
+# 			print("Specified: " + zone)
+# 			i=i+1
+# 			print(i)
 		case _:
 # 			print(difflib.get_close_matches(zone,tz_list,cutoff=.35))
 			zone = difflib.get_close_matches(zone,tz_list,cutoff=.15)[0]
-			print("Found: " + zone)
-			i=i+1
-			print(i)
+# 			print("Found: " + zone)
+# 			i=i+1
+# 			print(i)
 	time_in_new_timezone = parsed_date.astimezone(ZoneInfo(zone))
 	print(zone + ": " + time_in_new_timezone.strftime(time_format))
 	
