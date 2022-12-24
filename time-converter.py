@@ -63,6 +63,9 @@ for zone in timezones:
 		case "LA" | "la" | "Portland" | "portland" | "PDT" | "pdt" | "PST" | "pst"| "San Diego" | "san diego" | "San Francisco" | "san francisco" | "SF" | "sf":
 			zone = "US/Pacific"
 			zone_input = zone_input + "*" # highlight specified timezones
+		case "Cape town" | "cape town" | "Capetown" | "capetown":
+			zone = "Africa/Johannesburg"
+			zone_input = zone_input + "*" # highlight specified timezones
 		case "England" | "england" | "GB" | "gb" | "London" | "london" | "UK" | "uk":
 			zone = "UTC"
 			zone_input = zone_input + "*" # highlight specified timezones
