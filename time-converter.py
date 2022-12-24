@@ -31,24 +31,24 @@ import difflib
 # from functools import lru_cache
 
 # @lru_cache(maxsize=None)
-# def get_timezones():
+# def get_time_zones():
 #     return zoneinfo.available_timezones()
-# tz_list = get_timezones() # used if we want to cache
+# tz_list = get_time_zones() # used if we want to cache
 # ------------------------------
 
 time_format = "%-I:%M%p"
 source_time = sys.argv[1]
 source_locations = sys.argv[2]
-timezones = [location.strip() for location in source_locations.split(",")]
+time_zones = [location.strip() for location in source_locations.split(",")]
 tz_list = zoneinfo.available_timezones()
 parsed_date = dateparser.parse(source_time)
 
 print( "Input Time: " + source_time + " - Parsed: " + str(parsed_date) + " (" + dateparser.parse(source_time).strftime(time_format) + ")" )
 
-print(timezones)
+print(time_zones)
 print ("\n")
 
-for zone in timezones:
+for zone in time_zones:
 	zone_input = zone
 	match = 1
 	match zone:
@@ -76,10 +76,7 @@ for zone in timezones:
 				match = 0
 				zone = "UTC"
 	if match == 1:
-		time_in_new_timezone = parsed_date.astimezone(ZoneInfo(zone))
-		print(time_in_new_timezone.strftime(time_format) + " - " + zone_input + " (" + zone + ")" )
+		time_in_new_time_zone = parsed_date.astimezone(ZoneInfo(zone))
+		print(time_in_new_time_zone.strftime(time_format) + " - " + zone_input + " (" + zone + ")" )
 	else:
 		print("‼️ No match: " + zone_input)
-	
-	
-	
