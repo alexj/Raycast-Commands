@@ -6,7 +6,7 @@
 # @raycast.mode fullOutput
 
 # Optional parameters:
-# @raycast.icon 🤖
+# @raycast.icon 🕔
 # @raycast.packageName Time Converter
 # @raycast.argument1 { "type": "text", "placeholder": "Time" }
 # @raycast.argument2 { "type": "text", "placeholder": "Location(s)" }
@@ -51,18 +51,26 @@ print ("\n")
 for zone in timezones:
 	zone_input = zone
 	match zone:
-		case "LA" | "la":
-			zone = "America/Los_Angeles"
-			zone_input = "Los Angeles"
+		case "Atlanta" | "atlanta" | "ATL" | "atl" | "EDT" | "edt" | "EST" | "est" | "Boston" | "boston" | "NY" | "ny" | "NYC" | "nyc":
+			zone = "US/Eastern"
 			zone_input = zone_input + "*" # highlight specified timezones
-		case "NY" | "ny":
-			zone = "America/New_York"
-			zone_input = "New York"
-			zone_input = zone_input + "*"
+		case "Austin" | "austin" | "ATX" | "atx" | "CDT" | "cdt" | "CST" | "cst" | "Dallas" | "dallas" | "Houston" | "houston" | "San Antonio" | "san antonio":
+			zone = "US/Central"
+			zone_input = zone_input + "*" # highlight specified timezones
+		case "Boulder" | "boulder" | "Denver" | "denver" | "MDT" | "mdt" | "MST" | "mst":
+			zone = "US/Mountain"
+			zone_input = zone_input + "*" # highlight specified timezones
+		case "LA" | "la" | "Portland" | "portland" | "PDT" | "pdt" | "PST" | "pst"| "San Diego" | "san diego" | "San Francisco" | "san francisco" | "SF" | "sf":
+			zone = "US/Pacific"
+			zone_input = zone_input + "*" # highlight specified timezones
+		case "England" | "england" | "GB" | "gb" | "London" | "london" | "UK" | "uk":
+			zone = "UTC"
+			zone_input = zone_input + "*" # highlight specified timezones
 		case _:
-			zone = difflib.get_close_matches(zone.title(),tz_list,cutoff=.35)[0]
+#			zone = difflib.get_close_matches(zone.title(),tz_list,cutoff=.35)[0] # Title case helps for some inputs, but ruins acronyms like CDT
+			zone = difflib.get_close_matches(zone,tz_list,cutoff=.35)[0]
 	time_in_new_timezone = parsed_date.astimezone(ZoneInfo(zone))
-	print(zone_input.title() + " (" + zone + "): " + time_in_new_timezone.strftime(time_format))
+	print(time_in_new_timezone.strftime(time_format) + " - " + zone_input + " (" + zone + ")" )
 	
 	
 	
