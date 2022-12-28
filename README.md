@@ -1,5 +1,5 @@
 # Raycast Commands
-Understands 24 hour and 12 hour notation (requires AM/PM or am/pm), with or without minutes as well as "fuzzy" times, such as "4PM tomorrow".
+Understands 24 hour and 12 hour notation (requires AM/PM or am/pm), with or without minutes as well as "fuzzy" times, such as "now" or "4PM tomorrow" .
 Does it's best to match input to timezones. World capitals show up, but many cities will require using specific timezones
 
 # NOTES

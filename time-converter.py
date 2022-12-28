@@ -98,7 +98,7 @@ print(time_zone_output)
 try:
 	write_to_clipboard(time_zone_output)
 # 	print("🎉 List copied to clipbaord")
-	
+
 	resp = applescript.tell.app("System Events",'''
 	tell application "System Events"
 	  tell process 1 where frontmost is true
