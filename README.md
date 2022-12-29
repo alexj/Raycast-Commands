@@ -1,16 +1,18 @@
 # Raycast Time-Converter Command
-This command takes a time (local to your machine) as the first input and one or more comma-separated locations as the second input, and then returns the time in the specified locations. For example (typed in US Central Timezone):
+This command takes a time (local to your machine) as the first input and one or more comma-separated locations as the second input, and then returns the time in the specified locations.
+
+For example (typed in US Central Timezone):
 
 `3PM` `NYC, London, Kolkata`
 
 returns
 
 ```
-	• 4:00 PM - NYC (US/Eastern)
-	
-	• 9:00 PM - London (UTC)
-	
-	• 2:30 AM - Kolkata (Asia/Kolkata)
+• 4:00 PM - NYC (US/Eastern)
+
+• 9:00 PM - London (UTC)
+
+• 2:30 AM - Kolkata (Asia/Kolkata)
 ```
 
 The command understands both 24-hour and 12-hour notation (the latter AM/PM or am/pm), with or without minutes as well as "fuzzy" times, such as "now" or "4PM tomorrow".
@@ -25,7 +27,9 @@ In this case, the better prompt would be `4pm` `US Central`.
 The first time you run this, you will be prompted to allow Raycast to access `System Events`, which is required in order for the command to paste the results.
 Requires python 3.10+ which includes ZoneInfo and the match case statement
 
-Requires [dateparser](https://dateparser.readthedocs.io/en/latest/):
+This script requires two external dependencies: 
+
+1. [dateparser](https://dateparser.readthedocs.io/en/latest/):
 
  	`pip3 install dateparser`
  	
@@ -33,7 +37,7 @@ Or, if you don’t have pip installed:
  	
 	`$ easy_install dateparser` 
 	
-Requires the applescript module:
+2. applescript:
 
 	`pip3 install applescript`
 
