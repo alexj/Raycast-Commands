@@ -10,7 +10,7 @@ Requires [dateparser](https://dateparser.readthedocs.io/en/latest/):
 
  	`pip3 install dateparser`
  	
- 	Or, if you don’t have pip installed:
+Or, if you don’t have pip installed:
  	
 	`$ easy_install dateparser` 
 	
