@@ -1,16 +1,17 @@
 # Raycast Time-Converter Command
 This command takes a time (local to your machine) as the first input and one or more comma-separated locations as the second input, and then returns the time in the specified locations. For example (typed in US Central Timezone):
 
-	`3PM` `NYC, London, Kolkata`
+`3PM` `NYC, London, Kolkata`
 
 returns
 
-	`• 4:00 PM - NYC (US/Eastern)
+```
+	• 4:00 PM - NYC (US/Eastern)
 	
 	• 9:00 PM - London (UTC)
 	
 	• 2:30 AM - Kolkata (Asia/Kolkata)
-`
+```
 
 The command understands both 24-hour and 12-hour notation (the latter AM/PM or am/pm), with or without minutes as well as "fuzzy" times, such as "now" or "4PM tomorrow".
 
