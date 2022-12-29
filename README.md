@@ -5,11 +5,17 @@ Does it's best to match input to timezones. World capitals show up, but many cit
 # NOTES
 The first time you run this, you will be prompted to allow Raycast to access `System Events`, which is required in order for the command to paste the results.
 Requires python 3.10+ which includes ZoneInfo and the match case statement
+
 Requires [dateparser](https://dateparser.readthedocs.io/en/latest/):
+
  	`pip3 install dateparser`
+ 	
  	Or, if you don’t have pip installed:
+ 	
 	`$ easy_install dateparser` 
-Requires the applescript module
+	
+Requires the applescript module:
+
 	`pip3 install applescript`
 
 # Limitations
@@ -18,7 +24,6 @@ Requires the applescript module
 
 
 # To-Do
-- Separate the write-to-clipboard from the paste functionality and turn it into an option
 - Perhaps an option or different script for:
 	- single line versus list output
 	- Copy to clipboard vs. paste
