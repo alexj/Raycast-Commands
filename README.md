@@ -25,7 +25,7 @@ The command understands both 24-hour and 12-hour notation (the latter AM/PM or a
 
 In this case, the better prompt would be `4pm` `US Central`.
 
-## Setup Notes
+### Setup Notes
 There are three (easy) things that you'll need to do when you first use this command.
 1. The first time you run this, you will be prompted to allow Raycast to access `System Events`, which is required in order for the command to paste the results.
 Requires python 3.10+ which includes ZoneInfo and the match case statement
@@ -44,11 +44,11 @@ This script requires two additional python packages, both of which need you to u
 
 	`pip3 install applescript`
 
-## Limitations
+### Limitations
 * Date ranges are not supported
 * At present, in order to paste the output, the script has to first copy the output into the clipboard, so it will overwrite the clipboard contents.
 
-## To-Do
+### To-Do
 - Disable copy-to-clipboard as it now pastes directly
 - Add options or different scripts for:
 	- single line output versus list
@@ -56,5 +56,5 @@ This script requires two additional python packages, both of which need you to u
 - Make a config where the user can include default locations, used if none are specified (Raycast doesn't support optional arguments)
 - Add config to automatically include a specific location/time at the start or end of the string (a label for the input time)
 
-# Credits & Acknowledgements
+### Credits & Acknowledgements
 Inspired by the [Timezone Expander Alfred workflow](https://github.com/devonzuegel/timezone-expander.alfredworkflow) by [Devon Zuegel](https://devonzuegel.com)
