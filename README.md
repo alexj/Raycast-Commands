@@ -1,4 +1,6 @@
-# Raycast Time-Converter Command
+# Raycast Commans
+
+## Time-Converter Command
 This command takes a time (local to your machine) as the first input and one or more comma-separated locations as the second input, and then returns the time in the specified locations.
 
 For example (typed in US Central Timezone):
