@@ -1,6 +1,6 @@
-# Raycast Commans
+# Raycast Commands
 
-## Time-Converter Command
+## Time-Converter
 This command takes a time (local to your machine) as the first input and one or more comma-separated locations as the second input, and then returns the time in the specified locations.
 
 For example (typed in US Central Timezone):
@@ -26,11 +26,12 @@ The command understands both 24-hour and 12-hour notation (the latter AM/PM or a
 In this case, the better prompt would be `4pm` `US Central`.
 
 ### Setup Notes
+Requires python 3.10+ which includes ZoneInfo and the match case statement. It also should have `pip3` installed by default, which is needed to install two supporting packages (see below).
+
 There are three (easy) things that you'll need to do when you first use this command.
 1. The first time you run this, you will be prompted to allow Raycast to access `System Events`, which is required in order for the command to paste the results.
-Requires python 3.10+ which includes ZoneInfo and the match case statement
 
-This script requires two additional python packages, both of which need you to use the Terminal (Terminal.app, which comes with macOS): 
+	This script requires two additional python packages, both of which require that you use the Terminal (Terminal.app, which comes with macOS): 
 
 2. [dateparser](https://dateparser.readthedocs.io/en/latest/):
 
