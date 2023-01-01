@@ -7,6 +7,7 @@ This command takes a time (local to your machine) as the first input, one or mor
 Examples typed in US Central Timezone:
 
 *1.* `3PM` `NYC, London, Kolkata` `l`
+
 	"Output the times in New York City, London, and Kolkata that match 3PM my time (US Central) as a list"
 
 	Returns:
@@ -32,6 +33,7 @@ Examples typed in US Central Timezone:
 
 
 *3.* `10AM` (nothing else specified):
+
 	"Output the times for my default cities (Austin, TX, London, Sofia, Bulgaria) in the default format (bulleted list)"
 
 	Returns:
