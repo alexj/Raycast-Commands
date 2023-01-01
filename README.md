@@ -90,9 +90,9 @@ This is set to `False` by default, which provides cleaner output, but you can se
 There is a section in the script that maps common cities, acronyms (NYC for New York City, ATX for Austin, Texas) or regions to specific timezones. You can add more if you're comfortable. Look for the section that looks like (this is simplified):
 
 ```
-case "Atlanta" | "atlanta" | "ATL" | "atl" | "Boston" | "boston" | "NY" | "ny" | "NYC" | "nyc":
+case "Atlanta" | "atlanta" | "ATL" | "atl" | "Boston" | "boston" | "NYC" | "nyc":
 	zone = "US/Eastern"
-case "Austin" | "austin" | "ATX" | "atx" | "Houston" | "houston" | "San Antonio" | "san antonio":
+case "Austin" | "austin" | "ATX" | "atx" | "Houston" | "houston":
 	zone = "US/Central"
 case "England" | "england" | "GB" | "gb" | "London" | "london" | "UK" | "uk":
 	zone = "UTC"
