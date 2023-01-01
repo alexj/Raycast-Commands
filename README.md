@@ -13,38 +13,34 @@ Examples typed in US Central Timezone:
 Returns:
 	
 ```
-• 4:00 PM - NYC (US/Eastern)
+• 4:00 PM - NYC
 
-• 9:00 PM - London (UTC)
+• 9:00 PM - London
 
-• 2:30 AM - Kolkata (Asia/Kolkata)
+• 2:30 AM - Kolkata
+
 ```
 
 
-
-*2.* `3PM` `NYC, London, Kolkata` `i`
+*2.* `3PM` `NYC, London, Kolkata` `inline`
 	
 "Output the times in New York City, London, and Kolkata that match 3PM my time (US Central) inline"
 	
 Returns:
 	
 	
-`4:00 PM - NYC (US/Eastern) • 9:00 PM - London (UTC) • 2:30 AM - Kolkata (Asia/Kolkata)`
+`4:00 PM NYC / 9:00 PM London / 2:30 AM Kolkata`
 
 
 *3.* `10AM` (nothing else specified):
 
-"Output the times for my default cities (Austin, TX, London, Sofia, Bulgaria) in the default format (bulleted list)"
+"Output the times for the default cities (Austin, TX, London, Sofia, Bulgaria -- see below for how you can change these) in the default inline format
 
 Returns:
 	
 	
 ```
-• 10:00 AM - Austin (US/Central)
-
-• 4:00 PM - London (UTC)
-
-• 6:00 PM - Sofia (Europe/Sofia)
+10:00 AM Austin / 4:00 PM London / 6:00 PM Sofia
 ```
 
 
@@ -69,11 +65,11 @@ There are three (easy) things that you'll need to do when you first use this com
 
 	This script requires two additional python packages, both of which require that you use the Terminal (Terminal.app, which comes with macOS): 
 
-2. `[dateparser](https://dateparser.readthedocs.io/en/latest/)`:
+2. Install `[dateparser](https://dateparser.readthedocs.io/en/latest/)` via the command line:
 
  	`pip3 install dateparser`
 
-3. `applescript`:
+3. Install `applescript` via the command line:
 
 	`pip3 install applescript`
 
@@ -87,7 +83,9 @@ The locations listed here will be used if nothing is specified, which is handy i
 This script outputs the processed times on a single line by default ("inline"). You can change it to `list` if you want it to output a bulleted list by default. You can override either setting as needed when you invoke the Raycast command.
  
 #### include_parsed_time_zone
-This is set to `False` by default, which provides cleaner output, but you can set it to `True` to have the script include the parsed timezonein the output, which is helpful if you want to validate the right timezone was selected.
+This is set to `False` by default, which provides cleaner output, but you can set it to `True` to have the script include the parsed timezonein inthe output, which is helpful if you want to validate the right timezone was selected. It will appear like:
+
+`4:00 PM - NYC (US/Eastern) • 9:00 PM - London (UTC) • 2:30 AM - Kolkata (Asia/Kolkata)`
 
 ## To-Do
 - Determiene how to disable copy-to-clipboard as it now pastes directly
