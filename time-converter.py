@@ -10,7 +10,7 @@
 # @raycast.packageName Time Converter
 # @raycast.argument1 { "type": "text", "placeholder": "Time" }
 # @raycast.argument2 { "type": "text", "placeholder": "Location(s)", "optional": true }
-# @raycast.argument3 { "type": "text", "placeholder": "Format ('l' for lis' or 'i' for inline)", "optional": true }
+# @raycast.argument3 { "type": "text", "placeholder": "Format ('l' for list or 'i' for inline)", "optional": true }
 
 # Documentation:
 # @raycast.description Takes a time and outputs the time in one or more timezones
@@ -41,18 +41,21 @@ import applescript
 
 
 default_locations = "Austin, London, Sofia" #These locations will be used if nothing is specified
-default_format = "l" # Can be "l" for a bulleted list  or "i" for inline results 
+default_format = "list" # Can be "l" or "list" for a bulleted list  or "i" or "inline" for inline results 
 
 
 time_format = "%-I:%M %p"
 time_zone_output = ''
 source_time = sys.argv[1]
 source_locations = sys.argv[2]
+if not source_locations:
+	source_locations = default_locations
 time_zones = [location.strip() for location in source_locations.split(",")]
 tz_list = zoneinfo.available_timezones()
 parsed_date = dateparser.parse(source_time)
-output_format = 'list' # 'list' or 'inline'
-
+output_format = sys.argv[3] # 'l' for list or 'i' for inline
+if not output_format:
+	output_format = default_format
 
 def write_to_clipboard(output):
     process = subprocess.Popen(
@@ -63,7 +66,8 @@ def write_to_clipboard(output):
 # print(time_zones)
 # print ("\n")
 
-for zone in time_zones:
+
+for index, zone in enumerate(time_zones):
 	zone_input = zone
 	match = 1
 	match zone:
@@ -92,12 +96,16 @@ for zone in time_zones:
 				zone = "UTC"
 	if match == 1:
 		time_in_new_time_zone = parsed_date.astimezone(ZoneInfo(zone))
-		if output_format == 'list':
+		if (output_format == 'l' or output_format == 'list'):
 			time_zone_output = time_zone_output + "• " + time_in_new_time_zone.strftime(time_format) + " - " + zone_input + " (" + zone + ")\n"
 		else:
-			time_zone_output = time_zone_output + time_in_new_time_zone.strftime(time_format) + " - " + zone_input + " (" + zone + ") • "
+			time_zone_output = time_zone_output + time_in_new_time_zone.strftime(time_format) + " - " + zone_input + " (" + zone + ")"
+			if index == len(time_zones) - 1:
+				print ('ggg')
+			else:
+				time_zone_output = time_zone_output + " | "
 	else:
-		if output_format == 'list':
+		if (output_format == 'l' or output_format == 'list'):
 			time_zone_output = time_zone_output + "• ‼️ No match: " + zone_input + "\n"
 		else:
 			time_zone_output = time_zone_output + "‼️ No match: " + zone_input + " • "
