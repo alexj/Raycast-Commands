@@ -10,7 +10,7 @@
 # @raycast.packageName Time Converter
 # @raycast.argument1 { "type": "text", "placeholder": "Time" }
 # @raycast.argument2 { "type": "text", "placeholder": "Location(s)", "optional": true }
-# @raycast.argument3 { "type": "text", "placeholder": "Format ('l' for list or 'i' for inline)", "optional": true }
+# @raycast.argument3 { "type": "text", "placeholder": "Format (list or inline)", "optional": true }
 
 # Documentation:
 # @raycast.description Takes a time and outputs the time in one or more timezones
@@ -41,9 +41,10 @@ import applescript
 
 
 # ========== CONFIGURATION ==========
-default_locations = "Austin, London, Sofia" #These locations will be used if nothing is specified
-default_format = "inline" # Can be "l" or "list" for a bulleted list  or "i" or "inline" for inline results 
-include_parsed_time_zone = False # if set to True, the parsed timezone will be included in the output, which is helpful if you want to validate the right timezone waa selected
+
+default_locations = "Austin, London, Sofia"  #These locations will be used if nothing is specified
+default_format = "inline"  # Can be "list" for a bulleted list or "inline" for inline results 
+include_parsed_time_zone = False  # When set to True, the parsed timezone will be included in the output, which can help you validate the right timezone waa selected
 
 # ========== END CONFIGURATION ==========
 
@@ -115,7 +116,6 @@ for index, zone in enumerate(time_zones):
 print(time_zone_output)
 try:
 	write_to_clipboard(time_zone_output)
-# 	print("🎉 List copied to clipbaord")
 
 	resp = applescript.tell.app("System Events",'''
 	tell application "System Events"
@@ -125,6 +125,5 @@ try:
 	end tell
 	''')
 	assert resp.code == 0, resp.err
-# 	print(resp.out)
 except:
  	print("😕 Sorry, something went wrong when outputting the results.")
