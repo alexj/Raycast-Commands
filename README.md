@@ -14,9 +14,7 @@ Returns:
 	
 ```
 • 4:00 PM - NYC
-
 • 9:00 PM - London
-
 • 2:30 AM - Kolkata
 
 ```
@@ -83,9 +81,14 @@ The locations listed here will be used if nothing is specified, which is handy i
 This script outputs the processed times on a single line by default ("inline"). You can change it to `list` if you want it to output a bulleted list by default. You can override either setting as needed when you invoke the Raycast command.
  
 #### include_parsed_time_zone
-This is set to `False` by default, which provides cleaner output, but you can set it to `True` to have the script include the parsed timezonein inthe output, which is helpful if you want to validate the right timezone was selected. It will appear like:
+This is set to `False` by default, which provides cleaner output, but you can set it to `True` to have the script include the parsed timezone in the output. This can help you validate that the right timezone was selected. It will appear like:
 
 `4:00 PM - NYC (US/Eastern) • 9:00 PM - London (UTC) • 2:30 AM - Kolkata (Asia/Kolkata)`
+
+### Special Cases
+There is a section in the script that maps common cities, acronyms (NYC for New York City, ATX for Austin, Texas) or regions to specific timezones. You can add more if you're comfortable.
+
+See the file `timezone_list.md` to see the full list of available timezones (made available by your system and surfaced through the `[zoneinfo](https://docs.python.org/3/library/zoneinfo.html#module-zoneinfo)`).
 
 ## To-Do
 - Determiene how to disable copy-to-clipboard as it now pastes directly
