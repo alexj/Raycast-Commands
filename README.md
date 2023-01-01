@@ -12,13 +12,13 @@ Examples typed in US Central Timezone:
 
 Returns:
 	
-	```
-	• 4:00 PM - NYC (US/Eastern)
-	
-	• 9:00 PM - London (UTC)
-	
-	• 2:30 AM - Kolkata (Asia/Kolkata)
-	```
+```
+• 4:00 PM - NYC (US/Eastern)
+
+• 9:00 PM - London (UTC)
+
+• 2:30 AM - Kolkata (Asia/Kolkata)
+```
 
 
 
@@ -29,7 +29,7 @@ Returns:
 Returns:
 	
 	
-	`4:00 PM - NYC (US/Eastern) • 9:00 PM - London (UTC) • 2:30 AM - Kolkata (Asia/Kolkata)`
+`4:00 PM - NYC (US/Eastern) • 9:00 PM - London (UTC) • 2:30 AM - Kolkata (Asia/Kolkata)`
 
 
 *3.* `10AM` (nothing else specified):
@@ -39,13 +39,13 @@ Returns:
 Returns:
 	
 	
-	```
-	• 10:00 AM - Austin (US/Central)
-	
-	• 4:00 PM - London (UTC)
-	
-	• 6:00 PM - Sofia (Europe/Sofia)
-	```
+```
+• 10:00 AM - Austin (US/Central)
+
+• 4:00 PM - London (UTC)
+
+• 6:00 PM - Sofia (Europe/Sofia)
+```
 
 
 The command understands both 24-hour and 12-hour notation (the latter AM/PM or am/pm), with or without minutes as well as "fuzzy" times, such as "now" or "4PM tomorrow".
