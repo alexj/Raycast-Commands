@@ -6,7 +6,7 @@ This command takes a time (local to your machine) as the first input, one or mor
 ### Examples
 Examples typed in US Central Timezone:
 
-*1.* `3PM` `NYC, London, Kolkata` `l`
+**1.** `3PM` `NYC, London, Kolkata` `l`
 
 "Output the times in New York City, London, and Kolkata that match 3PM my time (US Central) as a list"
 
@@ -19,18 +19,19 @@ Returns:
 
 ```
 
-
-*2.* `3PM` `NYC, London, Kolkata` `inline`
+**2.** `3PM` `NYC, London, Kolkata` `inline`
 	
 "Output the times in New York City, London, and Kolkata that match 3PM my time (US Central) inline"
 	
 Returns:
 	
 	
-`4:00 PM NYC / 9:00 PM London / 2:30 AM Kolkata`
+```
+4:00 PM NYC / 9:00 PM London / 2:30 AM Kolkata
+```
 
 
-*3.* `10AM` (nothing else specified):
+**3.** `10AM` (nothing else specified):
 
 "Output the times for the default cities (Austin, TX, London, Sofia, Bulgaria -- see below for how you can change these) in the default inline format
 
@@ -46,7 +47,7 @@ The command understands both 24-hour and 12-hour notation (the latter AM/PM or a
 
 ### Limitations
 * Date ranges are not supported
-* *This will replace your clipboard contents*. In order to paste the output, the script has to first copy the output into the clipboard. Luckily, Raycast tracks the clipboard history.
+* **This will replace your clipboard contents**. In order to paste the output, the script has to first copy the output into the clipboard. Luckily, Raycast tracks the clipboard history.
 
 ### Errors
 The command does it's best to match input to timezones and most world capitals and major cities show up, but many cities will require using specific timezones. The command will highlight when it is unable to match - for example, the prompt `4pm` `Fort Worth` returns:
@@ -86,7 +87,22 @@ This is set to `False` by default, which provides cleaner output, but you can se
 `4:00 PM - NYC (US/Eastern) • 9:00 PM - London (UTC) • 2:30 AM - Kolkata (Asia/Kolkata)`
 
 ### Special Cases
-There is a section in the script that maps common cities, acronyms (NYC for New York City, ATX for Austin, Texas) or regions to specific timezones. You can add more if you're comfortable.
+There is a section in the script that maps common cities, acronyms (NYC for New York City, ATX for Austin, Texas) or regions to specific timezones. You can add more if you're comfortable. Look for the section that looks like (this is simplified):
+
+```
+case "Atlanta" | "atlanta" | "ATL" | "atl" | "Boston" | "boston" | "EDT" | "edt" | "EST" | "est" | "Miami" | "miami" | "NY" | "ny" | "NYC" | "nyc":
+	zone = "US/Eastern"
+case "Austin" | "austin" | "ATX" | "atx" | "CDT" | "cdt" | "CST" | "cst" | "Dallas" | "dallas" | "Houston" | "houston" | "San Antonio" | "san antonio":
+	zone = "US/Central"
+case "Cape town" | "cape town" | "Capetown" | "capetown":
+	zone = "Africa/Johannesburg"
+case "England" | "england" | "GB" | "gb" | "London" | "london" | "UK" | "uk":
+	zone = "UTC"
+case "New Zealand" | "new zealand" | "NZ" | "nz":
+	zone = "Pacific/Auckland"
+case "sofia" | "Sofia":
+	zone ="Europe/Sofia"
+```
 
 See the file [timezone_list.csv](timezone_list.csv) to see the full list of available timezones (made available by your system and surfaced through the [zoneinfo](https://docs.python.org/3/library/zoneinfo.html#module-zoneinfo package)).
 
