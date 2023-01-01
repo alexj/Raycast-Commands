@@ -6,7 +6,7 @@ This command takes a time (local to your machine) as the first input, one or mor
 ### Examples
 Examples typed in US Central Timezone:
 
-`3PM` `NYC, London, Kolkata` `l`
+*1.* `3PM` `NYC, London, Kolkata` `l`
 
 Returns:
 
@@ -19,7 +19,8 @@ Returns:
 ```
 
 
-`3PM` `NYC, London, Kolkata` `i`
+
+*2.* `3PM` `NYC, London, Kolkata` `i`
 
 
 Returns:
@@ -29,7 +30,8 @@ Returns:
 
 
 
-`10AM` (nothing else specified):
+
+*3.* `10AM` (nothing else specified):
 
 
 Returns:
@@ -46,7 +48,8 @@ Returns:
 
 The command understands both 24-hour and 12-hour notation (the latter AM/PM or am/pm), with or without minutes as well as "fuzzy" times, such as "now" or "4PM tomorrow".
 
-*Note:* the command does it's best to match input to timezones and most world capitals and major cities show up, but many cities will require using specific timezones. The command will highlight when it is unable to match - for example, the prompt `4pm` `Fort Worth` returns:
+### Errors
+The command does it's best to match input to timezones and most world capitals and major cities show up, but many cities will require using specific timezones. The command will highlight when it is unable to match - for example, the prompt `4pm` `Fort Worth` returns:
 
 `• ‼️ No match: Fort Worth`
 
