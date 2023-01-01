@@ -8,9 +8,9 @@ Examples typed in US Central Timezone:
 
 *1.* `3PM` `NYC, London, Kolkata` `l`
 
-	"Output the times in New York City, London, and Kolkata that match 3PM my time (US Central) as a list"
+"Output the times in New York City, London, and Kolkata that match 3PM my time (US Central) as a list"
 
-	Returns:
+Returns:
 	
 	```
 	• 4:00 PM - NYC (US/Eastern)
@@ -24,9 +24,9 @@ Examples typed in US Central Timezone:
 
 *2.* `3PM` `NYC, London, Kolkata` `i`
 	
-	"Output the times in New York City, London, and Kolkata that match 3PM my time (US Central) inline"
+"Output the times in New York City, London, and Kolkata that match 3PM my time (US Central) inline"
 	
-	Returns:
+Returns:
 	
 	
 	`4:00 PM - NYC (US/Eastern) • 9:00 PM - London (UTC) • 2:30 AM - Kolkata (Asia/Kolkata)`
@@ -34,9 +34,9 @@ Examples typed in US Central Timezone:
 
 *3.* `10AM` (nothing else specified):
 
-	"Output the times for my default cities (Austin, TX, London, Sofia, Bulgaria) in the default format (bulleted list)"
+"Output the times for my default cities (Austin, TX, London, Sofia, Bulgaria) in the default format (bulleted list)"
 
-	Returns:
+Returns:
 	
 	
 	```
