@@ -7,43 +7,43 @@ This command takes a time (local to your machine) as the first input, one or mor
 Examples typed in US Central Timezone:
 
 *1.* `3PM` `NYC, London, Kolkata` `l`
+	"Output the times in New York City, London, and Kolkata that match 3PM my time (US Central) as a list"
 
-Returns:
-
-```
-• 4:00 PM - NYC (US/Eastern)
-
-• 9:00 PM - London (UTC)
-
-• 2:30 AM - Kolkata (Asia/Kolkata)
-```
+	Returns:
+	
+	```
+	• 4:00 PM - NYC (US/Eastern)
+	
+	• 9:00 PM - London (UTC)
+	
+	• 2:30 AM - Kolkata (Asia/Kolkata)
+	```
 
 
 
 *2.* `3PM` `NYC, London, Kolkata` `i`
-
-
-Returns:
-
-
-`4:00 PM - NYC (US/Eastern) • 9:00 PM - London (UTC) • 2:30 AM - Kolkata (Asia/Kolkata)`
-
-
+	
+	"Output the times in New York City, London, and Kolkata that match 3PM my time (US Central) inline"
+	
+	Returns:
+	
+	
+	`4:00 PM - NYC (US/Eastern) • 9:00 PM - London (UTC) • 2:30 AM - Kolkata (Asia/Kolkata)`
 
 
 *3.* `10AM` (nothing else specified):
+	"Output the times for my default cities (Austin, TX, London, Sofia, Bulgaria) in the default format (bulleted list)"
 
-
-Returns:
-
-
-```
-• 10:00 AM - Austin (US/Central)
-
-• 4:00 PM - London (UTC)
-
-• 6:00 PM - Sofia (Europe/Sofia)
-```
+	Returns:
+	
+	
+	```
+	• 10:00 AM - Austin (US/Central)
+	
+	• 4:00 PM - London (UTC)
+	
+	• 6:00 PM - Sofia (Europe/Sofia)
+	```
 
 
 The command understands both 24-hour and 12-hour notation (the latter AM/PM or am/pm), with or without minutes as well as "fuzzy" times, such as "now" or "4PM tomorrow".
