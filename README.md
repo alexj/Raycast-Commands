@@ -88,7 +88,7 @@ This is set to `False` by default, which provides cleaner output, but you can se
 ### Special Cases
 There is a section in the script that maps common cities, acronyms (NYC for New York City, ATX for Austin, Texas) or regions to specific timezones. You can add more if you're comfortable.
 
-See the file `timezone_list.csv` to see the full list of available timezones (made available by your system and surfaced through the [zoneinfo](https://docs.python.org/3/library/zoneinfo.html#module-zoneinfo)).
+See the file [timezone_list.csv](timezone_list.csv) to see the full list of available timezones (made available by your system and surfaced through the [zoneinfo](https://docs.python.org/3/library/zoneinfo.html#module-zoneinfo package)).
 
 ## To-Do
 - Determine how to disable copy-to-clipboard as it now pastes directly
