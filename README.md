@@ -62,40 +62,36 @@ The command does it's best to match input to timezones and most world capitals a
 In this case, the better prompt would be `4pm` `US Central`.
 
 ## Setup Notes
-Requires python 3.10+ which includes ZoneInfo and the match case statement. It also should have `pip3` installed by default, which is needed to install two supporting packages (see below).
+Requires python 3.10+ which includes `ZoneInfo` and the match case statement. It also should have `pip3` installed by default, which is needed to install two supporting packages (see below).
 
 There are three (easy) things that you'll need to do when you first use this command.
 1. The first time you run this, you will be prompted to allow Raycast to access `System Events`, which is required in order for the command to paste the results.
 
 	This script requires two additional python packages, both of which require that you use the Terminal (Terminal.app, which comes with macOS): 
 
-2. [dateparser](https://dateparser.readthedocs.io/en/latest/):
+2. `[dateparser](https://dateparser.readthedocs.io/en/latest/)`:
 
  	`pip3 install dateparser`
 
-3. applescript:
+3. `applescript`:
 
 	`pip3 install applescript`
 
 ## Configuration
 In the "CONFIGURATION" section of time-converter.py, there are three options you can modify:
 
-### default_locations
+#### default_locations
 The locations listed here will be used if nothing is specified, which is handy if you routinely use this for a specific location or set of locations. This list is initially set to `Austin, London, Sofia`
 
-### default_format 
+#### default_format 
 This script outputs the processed times on a single line by default ("inline"). You can change it to `list` if you want it to output a bulleted list by default. You can override either setting as needed when you invoke the Raycast command.
  
-### include_parsed_time_zone
+#### include_parsed_time_zone
 This is set to `False` by default, which provides cleaner output, but you can set it to `True` to have the script include the parsed timezonein the output, which is helpful if you want to validate the right timezone was selected.
 
-### To-Do
-- Disable copy-to-clipboard as it now pastes directly
-- Add options or different scripts for:
-	- single line output versus list
-	- Copy to clipboard vs. paste
-- Make a config where the user can include default locations, used if none are specified
-- Add config to automatically include a specific location/time at the start or end of the string (a label for the input time)
+## To-Do
+- Determiene how to disable copy-to-clipboard as it now pastes directly
+
 
 ### Credits & Acknowledgements
 Inspired by the [Timezone Expander Alfred workflow](https://github.com/devonzuegel/timezone-expander.alfredworkflow) by [Devon Zuegel](https://devonzuegel.com)
