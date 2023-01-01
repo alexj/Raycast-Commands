@@ -8,7 +8,7 @@ Examples typed in US Central Timezone:
 
 **1.** `3PM` `NYC, London, Kolkata` `l`
 
-"Output the times in New York City, London, and Kolkata that match 3PM my time (US Central) as a list"
+"Output the times in New York City, London, and Kolkata that match 3PM (I'm in US Central) as a list"
 
 Returns:
 	
@@ -21,7 +21,7 @@ Returns:
 
 **2.** `3PM` `NYC, London, Kolkata` `inline`
 	
-"Output the times in New York City, London, and Kolkata that match 3PM my time (US Central) inline"
+"Output the times in New York City, London, and Kolkata that match 3PM my time, inline"
 	
 Returns:
 	
@@ -33,7 +33,7 @@ Returns:
 
 **3.** `10AM` (nothing else specified):
 
-"Output the times for the default cities (Austin, TX, London, Sofia, Bulgaria -- see below for how you can change these) in the default inline format
+"Output the times for the default cities (Austin, TX, London, Sofia, Bulgaria in the default inline format. [See 'Default Locations' below](#default_locations) to see how you can set these to the locations you'd like.
 
 Returns:
 	
