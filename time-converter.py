@@ -40,9 +40,12 @@ import applescript
 # ------------------------------
 
 
+# ========== CONFIGURATION ==========
 default_locations = "Austin, London, Sofia" #These locations will be used if nothing is specified
 default_format = "inline" # Can be "l" or "list" for a bulleted list  or "i" or "inline" for inline results 
-include_parsed_time_zone = False # if set to True (the default), the parsed timezone will be included in the output
+include_parsed_time_zone = False # if set to True, the parsed timezone will be included in the output, which is helpful if you want to validate the right timezone waa selected
+
+# ========== END CONFIGURATION ==========
 
 time_format = "%-I:%M %p"
 time_zone_output = ''
@@ -62,12 +65,6 @@ def write_to_clipboard(output):
     process = subprocess.Popen(
         'pbcopy', env={'LANG': 'en_US.UTF-8'}, stdin=subprocess.PIPE)
     process.communicate(output.encode('utf-8'))
-
-
-# print( "Input Time: " + source_time + " - Parsed: " + str(parsed_date) + " (" + dateparser.parse(source_time).strftime(time_format) + ")" )
-# print(time_zones)
-# print ("\n")
-
 
 for index, zone in enumerate(time_zones):
 	zone_input = zone
@@ -103,18 +100,18 @@ for index, zone in enumerate(time_zones):
 			parsed_zone_output = " (" + zone + ")"
 			
 		if (output_format == 'l' or output_format == 'list'):
-			time_zone_output = time_zone_output + "• " + time_in_new_time_zone.strftime(time_format) + " - " + zone_input + parsed_zone_output + "\n"
+			time_zone_output += "• " + time_in_new_time_zone.strftime(time_format) + " - " + zone_input + parsed_zone_output + "\n"
 		else:
-			time_zone_output = time_zone_output + time_in_new_time_zone.strftime(time_format) + " " + zone_input + parsed_zone_output
+			time_zone_output += time_in_new_time_zone.strftime(time_format) + " " + zone_input + parsed_zone_output
 			if index == len(time_zones) - 1:
 				print ('')
 			else:
-				time_zone_output = time_zone_output + " / "
+				time_zone_output += " / "
 	else:
 		if (output_format == 'l' or output_format == 'list'):
-			time_zone_output = time_zone_output + "• ‼️ No match: " + zone_input + "\n"
+			time_zone_output += "• ‼️ No match: " + zone_input + "\n"
 		else:
-			time_zone_output = time_zone_output + "‼️ No match: " + zone_input + " • "
+			time_zone_output += "‼️ No match: " + zone_input + " • "
 print(time_zone_output)
 try:
 	write_to_clipboard(time_zone_output)

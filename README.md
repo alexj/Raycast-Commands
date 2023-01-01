@@ -50,6 +50,10 @@ Returns:
 
 The command understands both 24-hour and 12-hour notation (the latter AM/PM or am/pm), with or without minutes as well as "fuzzy" times, such as "now" or "4PM tomorrow".
 
+### Limitations
+* Date ranges are not supported
+* *This will replace your clipboard contents*. In order to paste the output, the script has to first copy the output into the clipboard. Luckily, Raycast tracks the clipboard history.
+
 ### Errors
 The command does it's best to match input to timezones and most world capitals and major cities show up, but many cities will require using specific timezones. The command will highlight when it is unable to match - for example, the prompt `4pm` `Fort Worth` returns:
 
@@ -57,7 +61,7 @@ The command does it's best to match input to timezones and most world capitals a
 
 In this case, the better prompt would be `4pm` `US Central`.
 
-### Setup Notes
+## Setup Notes
 Requires python 3.10+ which includes ZoneInfo and the match case statement. It also should have `pip3` installed by default, which is needed to install two supporting packages (see below).
 
 There are three (easy) things that you'll need to do when you first use this command.
@@ -73,9 +77,17 @@ There are three (easy) things that you'll need to do when you first use this com
 
 	`pip3 install applescript`
 
-### Limitations
-* Date ranges are not supported
-* *This will replace your clipboard contents*. In order to paste the output, the script has to first copy the output into the clipboard. Luckily, Raycast tracks the clipboard history.
+## Configuration
+In the "CONFIGURATION" section of time-converter.py, there are three options you can modify:
+
+### default_locations
+The locations listed here will be used if nothing is specified, which is handy if you routinely use this for a specific location or set of locations. This list is initially set to `Austin, London, Sofia`
+
+### default_format 
+This script outputs the processed times on a single line by default ("inline"). You can change it to `list` if you want it to output a bulleted list by default. You can override either setting as needed when you invoke the Raycast command.
+ 
+### include_parsed_time_zone
+This is set to `False` by default, which provides cleaner output, but you can set it to `True` to have the script include the parsed timezonein the output, which is helpful if you want to validate the right timezone was selected.
 
 ### To-Do
 - Disable copy-to-clipboard as it now pastes directly
