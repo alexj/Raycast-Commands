@@ -90,18 +90,14 @@ This is set to `False` by default, which provides cleaner output, but you can se
 There is a section in the script that maps common cities, acronyms (NYC for New York City, ATX for Austin, Texas) or regions to specific timezones. You can add more if you're comfortable. Look for the section that looks like (this is simplified):
 
 ```
-case "Atlanta" | "atlanta" | "ATL" | "atl" | "Boston" | "boston" | "EDT" | "edt" | "EST" | "est" | "Miami" | "miami" | "NY" | "ny" | "NYC" | "nyc":
+case "Atlanta" | "atlanta" | "ATL" | "atl" | "Boston" | "boston" | "NY" | "ny" | "NYC" | "nyc":
 	zone = "US/Eastern"
-case "Austin" | "austin" | "ATX" | "atx" | "CDT" | "cdt" | "CST" | "cst" | "Dallas" | "dallas" | "Houston" | "houston" | "San Antonio" | "san antonio":
+case "Austin" | "austin" | "ATX" | "atx" | "Houston" | "houston" | "San Antonio" | "san antonio":
 	zone = "US/Central"
-case "Cape town" | "cape town" | "Capetown" | "capetown":
-	zone = "Africa/Johannesburg"
 case "England" | "england" | "GB" | "gb" | "London" | "london" | "UK" | "uk":
 	zone = "UTC"
 case "New Zealand" | "new zealand" | "NZ" | "nz":
 	zone = "Pacific/Auckland"
-case "sofia" | "Sofia":
-	zone ="Europe/Sofia"
 ```
 
 See the file [timezone_list.csv](timezone_list.csv) to see the full list of available timezones (made available by your system and surfaced through the [zoneinfo](https://docs.python.org/3/library/zoneinfo.html#module-zoneinfo package)).
