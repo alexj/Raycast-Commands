@@ -41,8 +41,8 @@ import applescript
 
 
 default_locations = "Austin, London, Sofia" #These locations will be used if nothing is specified
-default_format = "list" # Can be "l" or "list" for a bulleted list  or "i" or "inline" for inline results 
-
+default_format = "inline" # Can be "l" or "list" for a bulleted list  or "i" or "inline" for inline results 
+include_parsed_time_zone = False # if set to True (the default), the parsed timezone will be included in the output
 
 time_format = "%-I:%M %p"
 time_zone_output = ''
@@ -56,11 +56,13 @@ parsed_date = dateparser.parse(source_time)
 output_format = sys.argv[3] # 'l' for list or 'i' for inline
 if not output_format:
 	output_format = default_format
+parsed_zone_output = ''
 
 def write_to_clipboard(output):
     process = subprocess.Popen(
         'pbcopy', env={'LANG': 'en_US.UTF-8'}, stdin=subprocess.PIPE)
     process.communicate(output.encode('utf-8'))
+
 
 # print( "Input Time: " + source_time + " - Parsed: " + str(parsed_date) + " (" + dateparser.parse(source_time).strftime(time_format) + ")" )
 # print(time_zones)
@@ -96,14 +98,18 @@ for index, zone in enumerate(time_zones):
 				zone = "UTC"
 	if match == 1:
 		time_in_new_time_zone = parsed_date.astimezone(ZoneInfo(zone))
+		
+		if include_parsed_time_zone == True:
+			parsed_zone_output = " (" + zone + ")"
+			
 		if (output_format == 'l' or output_format == 'list'):
-			time_zone_output = time_zone_output + "• " + time_in_new_time_zone.strftime(time_format) + " - " + zone_input + " (" + zone + ")\n"
+			time_zone_output = time_zone_output + "• " + time_in_new_time_zone.strftime(time_format) + " - " + zone_input + parsed_zone_output + "\n"
 		else:
-			time_zone_output = time_zone_output + time_in_new_time_zone.strftime(time_format) + " - " + zone_input + " (" + zone + ")"
+			time_zone_output = time_zone_output + time_in_new_time_zone.strftime(time_format) + " " + zone_input + parsed_zone_output
 			if index == len(time_zones) - 1:
-				print ('ggg')
+				print ('')
 			else:
-				time_zone_output = time_zone_output + " | "
+				time_zone_output = time_zone_output + " / "
 	else:
 		if (output_format == 'l' or output_format == 'list'):
 			time_zone_output = time_zone_output + "• ‼️ No match: " + zone_input + "\n"
