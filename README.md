@@ -100,7 +100,7 @@ case "New Zealand" | "new zealand" | "NZ" | "nz":
 	zone = "Pacific/Auckland"
 ```
 
-See the file [timezone_list.csv](timezone_list.csv) to see the full list of available timezones (made available by your system and surfaced through the [zoneinfo](https://docs.python.org/3/library/zoneinfo.html#module-zoneinfo package)).
+See the file [timezone_list.csv](timezone_list.csv) to see the full list of available timezones (made available by your system and surfaced through the [zoneinfo](https://docs.python.org/3/library/zoneinfo.html#module-zoneinfo package) ).
 
 ## To-Do
 - Determine how to disable copy-to-clipboard as it now pastes directly
