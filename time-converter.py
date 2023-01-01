@@ -9,7 +9,8 @@
 # @raycast.icon 🕔
 # @raycast.packageName Time Converter
 # @raycast.argument1 { "type": "text", "placeholder": "Time" }
-# @raycast.argument2 { "type": "text", "placeholder": "Location(s)" }
+# @raycast.argument2 { "type": "text", "placeholder": "Location(s)", "optional": true }
+# @raycast.argument3 { "type": "text", "placeholder": "Format ('l' for lis' or 'i' for inline)", "optional": true }
 
 # Documentation:
 # @raycast.description Takes a time and outputs the time in one or more timezones
@@ -38,10 +39,10 @@ import applescript
 # tz_list = get_time_zones() # used if we want to cache
 # ------------------------------
 
-def write_to_clipboard(output):
-    process = subprocess.Popen(
-        'pbcopy', env={'LANG': 'en_US.UTF-8'}, stdin=subprocess.PIPE)
-    process.communicate(output.encode('utf-8'))
+
+default_locations = "Austin, London, Sofia" #These locations will be used if nothing is specified
+default_format = "l" # Can be "l" for a bulleted list  or "i" for inline results 
+
 
 time_format = "%-I:%M %p"
 time_zone_output = ''
@@ -51,6 +52,12 @@ time_zones = [location.strip() for location in source_locations.split(",")]
 tz_list = zoneinfo.available_timezones()
 parsed_date = dateparser.parse(source_time)
 output_format = 'list' # 'list' or 'inline'
+
+
+def write_to_clipboard(output):
+    process = subprocess.Popen(
+        'pbcopy', env={'LANG': 'en_US.UTF-8'}, stdin=subprocess.PIPE)
+    process.communicate(output.encode('utf-8'))
 
 # print( "Input Time: " + source_time + " - Parsed: " + str(parsed_date) + " (" + dateparser.parse(source_time).strftime(time_format) + ")" )
 # print(time_zones)
@@ -104,10 +111,9 @@ try:
 	  tell process 1 where frontmost is true
 	    click menu item "Paste" of menu "Edit" of menu bar 1
 	  end tell
-	end tell	
+	end tell
 	''')
 	assert resp.code == 0, resp.err
 # 	print(resp.out)
 except:
  	print("😕 Sorry, something went wrong when outputting the results.")
-	

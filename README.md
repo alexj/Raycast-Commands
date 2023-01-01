@@ -36,25 +36,21 @@ There are three (easy) things that you'll need to do when you first use this com
 2. [dateparser](https://dateparser.readthedocs.io/en/latest/):
 
  	`pip3 install dateparser`
- 	
- 	Or, if you don’t have pip installed:
- 	
-	`$ easy_install dateparser` 
-	
+
 3. applescript:
 
 	`pip3 install applescript`
 
 ### Limitations
 * Date ranges are not supported
-* At present, in order to paste the output, the script has to first copy the output into the clipboard, so it will overwrite the clipboard contents.
+* *This will replace your clipboard contents*. In order to paste the output, the script has to first copy the output into the clipboard. Luckily, Raycast tracks the clipboard history.
 
 ### To-Do
 - Disable copy-to-clipboard as it now pastes directly
 - Add options or different scripts for:
 	- single line output versus list
 	- Copy to clipboard vs. paste
-- Make a config where the user can include default locations, used if none are specified (Raycast doesn't support optional arguments)
+- Make a config where the user can include default locations, used if none are specified
 - Add config to automatically include a specific location/time at the start or end of the string (a label for the input time)
 
 ### Credits & Acknowledgements
