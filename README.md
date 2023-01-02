@@ -72,6 +72,10 @@ There are three (easy) things that you'll need to do when you first use this com
 
 	`pip3 install applescript`
 
+4. There are two System Settings that you may need to enable for Raycast, if you haven't already:
+* Enable the "Assistive Access" permission: `System Settings` > `Privacy & Security` > `Accessibility` > `Allow assistive applications to control this computer`
+* Enable Full Disk Access: `System Settings` > `Privacy & Security` > `Full Disk Access`
+
 ## Configuration
 In the "CONFIGURATION" section of time-converter.py, there are three options you can modify:
 

@@ -16,8 +16,6 @@
 # @raycast.description Takes a time and outputs the time in one or more timezones
 # @raycast.author Alex Jones
 
-# print(sys.version)
-
 import sys
 from datetime import datetime
 import zoneinfo
@@ -26,6 +24,8 @@ import dateparser
 import difflib
 import subprocess
 import applescript
+
+# print(sys.version)
 
 # ----- Caching (DISABLED) ----
 # Cache the list of timezones - unused as no clear benefit to execution time
