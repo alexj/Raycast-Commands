@@ -1,6 +1,6 @@
 # Raycast Commands
 
-## Time-Converter
+## Time Converter
 This command takes a time (local to your machine) as the first input, one or more comma-separated locations as the second input (optional), and a chosen format (optional). It will return the time in the locations using the format specified, or using the defaults.
 
 ### Examples
