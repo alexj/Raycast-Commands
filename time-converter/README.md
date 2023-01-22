@@ -1,6 +1,4 @@
-# Raycast Commands
-
-## Time Converter
+# Time Converter
 This command takes a time (local to your machine) as the first input, one or more comma-separated locations as the second input (optional), and a chosen format (optional). It will return the time in the locations using the format specified, or using the defaults.
 
 ### Examples
@@ -43,7 +41,7 @@ Returns:
 ```
 
 
-The command understands both 24-hour and 12-hour notation (the latter AM/PM or am/pm), with or without minutes as well as "fuzzy" times, such as "now" or "4PM tomorrow".
+The command understands both 24-hour and 12-hour notation (the latter AM/PM or am/pm), with or without minutes as well as "fuzzy" times, such as "now", "in an hour" or "4PM tomorrow".
 
 ### Limitations
 * Date ranges are not supported
