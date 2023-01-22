@@ -31,7 +31,7 @@ Returns:
 
 **3.** `10AM` (nothing else specified):
 
-"Output the times for the default cities (Austin, TX, London, Sofia, Bulgaria in the default inline format. See ['Default Locations'](#default_locations) below to learn how you can set the defaults to the locations you'd like.
+"Output the times for the default cities (Austin, TX, London, Sofia, Bulgaria in the default inline format). See ['Default Locations'](#default_locations) below to learn how you can set the defaults to the locations you'd like.
 
 Returns:
 	
